@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dayloom — Leaderboard</title>
+<meta name="description" content="Dayloom users who plan and finish their work most consistently, by day, week, month and all time.">
+<meta property="og:title" content="Dayloom Leaderboard">
+<meta property="og:image" content="https://eclk16.github.io/dayloom-releases/shots/en/rewards.png">
+<link rel="icon" href="assets/icon.png">
+<style>
+:root { --bg:#f7f6f3; --card:#fff; --text:#17171a; --muted:#62626b; --line:rgba(0,0,0,.08); --accent:#e8505b; --accent2:#7c5cff; --gold:#d79b1c; --silver:#9aa3ad; --bronze:#b87543; }
+@media (prefers-color-scheme: dark) { :root { --bg:#0e0e11; --card:#1b1b21; --text:#f3f3f6; --muted:#a3a3ad; --line:rgba(255,255,255,.09); } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font:16px/1.5 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Noto Sans",sans-serif; }
+html[dir=rtl] body { font-family:-apple-system,"SF Arabic","Geeza Pro","Noto Naskh Arabic",sans-serif; }
+.glow { position:fixed; inset:-20% -10% auto; height:70vh; z-index:-1; pointer-events:none; filter:blur(30px);
+  background: radial-gradient(35% 40% at 30% 30%, color-mix(in srgb,var(--accent) 22%,transparent), transparent 70%), radial-gradient(35% 40% at 70% 25%, color-mix(in srgb,var(--accent2) 22%,transparent), transparent 70%); }
+header { max-width:860px; margin:0 auto; display:flex; align-items:center; gap:10px; padding:18px 16px; }
+header a.brand { display:flex; align-items:center; gap:10px; text-decoration:none; color:inherit; font-weight:750; font-size:18px; }
+header img { width:30px; height:30px; border-radius:8px; } header .sp { flex:1; }
+header a.dl { text-decoration:none; color:#fff; background:linear-gradient(135deg,var(--accent),#f0734d); padding:8px 16px; border-radius:10px; font-weight:650; font-size:14px; }
+main { max-width:860px; margin:0 auto; padding:16px 16px 50px; }
+h1 { font-size:clamp(30px,5vw,44px); margin:10px 0 6px; letter-spacing:-.02em; }
+.sub { color:var(--muted); margin:0 0 22px; }
+.tabs { display:inline-flex; gap:4px; padding:4px; border-radius:999px; background:var(--card); border:1px solid var(--line); flex-wrap:wrap; }
+.tabs button { border:0; background:transparent; color:var(--muted); font:inherit; font-size:14px; font-weight:600; padding:7px 16px; border-radius:999px; cursor:pointer; }
+.tabs button.on { background:var(--text); color:var(--bg); }
+.meta { color:var(--muted); font-size:13px; margin:14px 2px; }
+.list { background:var(--card); border:1px solid var(--line); border-radius:18px; overflow:hidden; }
+.row { display:grid; grid-template-columns:52px 1fr auto auto; align-items:center; gap:12px; padding:12px 16px; border-top:1px solid var(--line); }
+.row:first-child { border-top:0; }
+.rank { width:34px; height:34px; border-radius:50%; display:grid; place-items:center; font-weight:750; font-size:14px; background:color-mix(in srgb,var(--text) 6%,transparent); }
+.r1 .rank { background:var(--gold); color:#fff; } .r2 .rank { background:var(--silver); color:#fff; } .r3 .rank { background:var(--bronze); color:#fff; }
+.who b { display:block; font-size:15.5px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.who span { color:var(--muted); font-size:13px; }
+.soc { display:flex; gap:8px; margin-top:3px; flex-wrap:wrap; } .soc a { color:var(--muted); font-size:12.5px; text-decoration:none; } .soc a:hover { color:var(--text); text-decoration:underline; }
+.num { text-align:end; font-variant-numeric:tabular-nums; } .num b { display:block; font-size:16px; } .num span { color:var(--muted); font-size:12px; }
+.empty { padding:40px 20px; text-align:center; color:var(--muted); }
+.join { margin-top:28px; background:var(--card); border:1px solid var(--line); border-radius:18px; padding:22px; display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+.join p { margin:0; flex:1; min-width:240px; color:var(--muted); } .join b { color:var(--text); }
+.join a { text-decoration:none; color:#fff; background:linear-gradient(135deg,var(--accent),#f0734d); padding:11px 18px; border-radius:12px; font-weight:650; }
+@media (max-width:560px) { .row { grid-template-columns:40px 1fr auto; } .row .tasks { display:none; } }
+footer { color:var(--muted); font-size:13px; text-align:center; padding:10px 16px 34px; } footer a { color:var(--muted); }
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<header><a class="brand" href="./"><img src="assets/icon.png" alt="">Dayloom</a><span class="sp"></span><a class="dl" href="https://github.com/eclk16/dayloom-releases/releases/latest/download/Dayloom.dmg" id="dl"></a></header>
+<main>
+  <h1 id="h1"></h1>
+  <p class="sub" id="sub"></p>
+  <div class="tabs" id="tabs">
+    <button data-p="day"></button><button data-p="week" class="on"></button><button data-p="month"></button><button data-p="all"></button>
+  </div>
+  <div class="meta" id="meta"></div>
+  <div class="list" id="list"></div>
+  <div class="join"><p id="join"></p><a href="https://github.com/eclk16/dayloom-releases/releases/latest/download/Dayloom.dmg" id="joinBtn"></a></div>
+</main>
+<footer>© 2026 Dayloom · <a href="./" id="home"></a> · <a href="legal/privacy.html" id="priv"></a></footer>
+<script src="i18n.js"></script>
+<script>
+(function () {
+  var API = 'https://dfwpxhhrnnmbjmntopod.supabase.co/rest/v1/leaderboard_public';
+  var KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRmd3B4aGhybm5tYmptbnRvcG9kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTU0MzUwOTIsImV4cCI6MjExMTAxMTA5Mn0.2UOoDjMznMLnzRfR73-RZ8LX1SbD2DENO_ZqA4qU5Cc';
+  var I = window.DAYLOOM_I18N || {}, html = document.documentElement;
+  function lang() {
+    var saved = null; try { saved = localStorage.getItem('dayloom-lang'); } catch (e) {}
+    if (saved && I[saved]) return saved;
+    var prefs = navigator.languages || [navigator.language || 'en'];
+    for (var i = 0; i < prefs.length; i++) { var p = (prefs[i] || '').toLowerCase();
+      if (p.indexOf('zh') === 0) return 'zh-Hans'; if (I[p.split('-')[0]]) return p.split('-')[0]; }
+    return 'en';
+  }
+  var L = lang(), D = I[L] || {}, E = I.en || {};
+  html.lang = L; html.dir = (L === 'ar' || L === 'ur') ? 'rtl' : 'ltr';
+  function t(k, v) { var s = D[k] || E[k] || ''; if (v) Object.keys(v).forEach(function (x) { s = s.split('{' + x + '}').join(String(v[x])); }); return s; }
+  function set(id, k) { document.getElementById(id).textContent = t(k); }
+  set('h1', 'lb.title'); set('sub', 'lb.sub'); set('dl', 'nav.download'); set('join', 'lb.join'); set('joinBtn', 'lb.join.btn'); set('home', 'lb.home'); set('priv', 'legal.privacy');
+  document.title = 'Dayloom — ' + t('lb.title');
+  var nf = new Intl.NumberFormat(L === 'zh-Hans' ? 'zh-CN' : L);
+  document.querySelectorAll('#tabs button').forEach(function (b) { b.textContent = t('lb.p.' + b.getAttribute('data-p')); });
+  var SOC = { x: 'X', linkedin: 'LinkedIn', github: 'GitHub', instagram: 'Instagram', website: 'Web' };
+  function safeURL(u) { try { var x = new URL(u); return x.protocol === 'https:' ? x.href : null; } catch (e) { return null; } }
+  function render(rows, period) {
+    var list = document.getElementById('list'); list.textContent = '';
+    if (!rows.length) { var e = document.createElement('div'); e.className = 'empty'; e.textContent = t('lb.empty'); list.appendChild(e); }
+    rows.forEach(function (r) {
+      var row = document.createElement('div'); row.className = 'row' + (r.rank <= 3 ? ' r' + r.rank : '');
+      var rk = document.createElement('div'); rk.className = 'rank'; rk.textContent = String(r.rank);
+      var who = document.createElement('div'); who.className = 'who';
+      var nm = document.createElement('b'); nm.textContent = String(r.display || '').slice(0, 40);
+      var lv = document.createElement('span'); lv.textContent = t('lb.level', { n: Number(r.level) || 1 });
+      who.appendChild(nm); who.appendChild(lv);
+      if (r.socials && typeof r.socials === 'object') {
+        var soc = document.createElement('div'); soc.className = 'soc';
+        Object.keys(SOC).forEach(function (k) { var u = r.socials[k] && safeURL(r.socials[k]); if (u) { var a = document.createElement('a'); a.href = u; a.rel = 'nofollow noopener'; a.target = '_blank'; a.textContent = SOC[k]; soc.appendChild(a); } });
+        if (soc.childNodes.length) who.appendChild(soc);
+      }
+      var xp = document.createElement('div'); xp.className = 'num'; var xb = document.createElement('b'); xb.textContent = nf.format(Number(r.xp) || 0); var xs = document.createElement('span'); xs.textContent = 'XP'; xp.appendChild(xb); xp.appendChild(xs);
+      var tk = document.createElement('div'); tk.className = 'num tasks'; var tb = document.createElement('b'); tb.textContent = nf.format(Number(r.tasks) || 0); var ts = document.createElement('span'); ts.textContent = t('lb.tasks'); tk.appendChild(tb); tk.appendChild(ts);
+      row.appendChild(rk); row.appendChild(who); row.appendChild(xp); row.appendChild(tk); list.appendChild(row);
+    });
+    var up = rows[0] && rows[0].updated_at ? new Date(rows[0].updated_at) : null;
+    document.getElementById('meta').textContent = t('lb.note.' + period) + (up ? ' · ' + t('lb.updated', { t: up.toLocaleTimeString(L === 'zh-Hans' ? 'zh-CN' : L, { hour: '2-digit', minute: '2-digit' }) }) : '');
+  }
+  function load(period) {
+    document.querySelectorAll('#tabs button').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-p') === period); });
+    document.getElementById('list').innerHTML = '<div class="empty">…</div>';
+    fetch(API + '?select=rank,display,level,xp,tasks,socials,updated_at&period=eq.' + period + '&order=rank.asc&limit=100', { headers: { apikey: KEY, Authorization: 'Bearer ' + KEY } })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (rows) { render(Array.isArray(rows) ? rows : [], period); })
+      .catch(function () { var l = document.getElementById('list'); l.innerHTML = ''; var e = document.createElement('div'); e.className = 'empty'; e.textContent = t('lb.error'); l.appendChild(e); });
+  }
+  document.querySelectorAll('#tabs button').forEach(function (b) { b.addEventListener('click', function () { var p = b.getAttribute('data-p'); try { history.replaceState(null, '', '#' + p); } catch (e) {} load(p); }); });
+  var start = ['day', 'week', 'month', 'all'].indexOf(location.hash.slice(1)) >= 0 ? location.hash.slice(1) : 'week';
+  load(start);
+})();
+</script>
+</body>
+</html>

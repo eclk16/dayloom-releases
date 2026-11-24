@@ -17,9 +17,9 @@ body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 -apple-system
 <script>
 (function(){
   var tr=(navigator.language||'').toLowerCase().indexOf('tr')===0;
-  document.getElementById('sub').textContent=tr?'PayTR güvencesiyle ödeme':'Secure payment by PayTR';
+  document.getElementById('sub').textContent=tr?'PayTR ile güvenli ödeme':'Secure payment by PayTR';
   var t=location.hash.slice(1), box=document.getElementById('box');
-  if(!/^[A-Za-z0-9]+$/.test(t)){box.innerHTML='<div class="err">'+(tr?'Ödeme bağlantısı geçersiz. Uygulamadan yeniden deneyin.':'This payment link is invalid. Please try again from the app.')+'</div>';return;}
+  if(!/^[A-Za-z0-9]+$/.test(t)){box.innerHTML='<div class="err">'+(tr?'Ödeme bağlantısı geçersiz. Lütfen uygulamadan yeniden deneyin.':'This payment link is invalid. Please try again from the app.')+'</div>';return;}
   var f=document.createElement('iframe');f.src='https://www.paytr.com/odeme/guvenli/'+t;f.id='paytriframe';f.frameBorder='0';f.scrolling='no';f.style.width='100%';f.style.minHeight='600px';
   box.appendChild(f);if(window.iFrameResize)iFrameResize({},'#paytriframe');
 })();

@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dayloom — Plan your day on the Mac</title>
-<meta name="description" content="Dayloom is a Mac app for planning your day: write your tasks, lock in the day, track time, plan with AI and work as a team.">
+<title>Dayloom — A calmer way to plan your workday</title>
+<meta name="description" content="Dayloom is a day planner for Mac. Write down your tasks in the morning, and Dayloom schedules them across your work hours. It also tracks time, plans with AI and supports teams.">
 <meta property="og:title" content="Dayloom">
-<meta property="og:description" content="Plan your day. Lock it in. Get it done.">
+<meta property="og:description" content="A calmer way to plan your workday on the Mac.">
 <meta property="og:image" content="shots/en/home.png">
 <link rel="icon" href="assets/icon.png">
 <style>
@@ -123,6 +123,26 @@ footer { padding: 30px 16px 46px; color: var(--muted); font-size: 14px; text-ali
 .plan .btn { justify-content: center; }
 .note { color: var(--muted); font-size: 14px; margin-top: 22px; }
 @media (max-width: 760px) { .plans { grid-template-columns: 1fr; } }
+
+.filters { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); margin-top: 26px; }
+.filters button { border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 14px; font-weight: 600; padding: 7px 16px; border-radius: 999px; cursor: pointer; }
+.filters button.on { background: var(--text); color: var(--bg); }
+.feats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; text-align: start; }
+.feat { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 8px; transition: transform .2s, box-shadow .2s; }
+.feat:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -16px rgba(0,0,0,.25); }
+.feat .top { display: flex; align-items: center; gap: 12px; }
+.feat .gl { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; font-size: 17px; font-weight: 700; background: color-mix(in srgb, var(--text) 6%, transparent); border: 1px solid var(--line); flex: none; }
+.feat h3 { margin: 0; font-size: 16.5px; flex: 1; }
+.feat p { margin: 0; color: var(--muted); font-size: 15px; }
+.pill { font-size: 11.5px; font-weight: 700; padding: 3px 9px; border-radius: 999px; white-space: nowrap; align-self: flex-start; }
+.pill.free { color: var(--green); background: color-mix(in srgb, var(--green) 14%, transparent); }
+.pill.pro { color: #fff; background: linear-gradient(135deg, var(--accent), var(--accent2)); }
+.pill.both { color: var(--accent2); background: color-mix(in srgb, var(--accent2) 13%, transparent); }
+.feat.pro { border-color: color-mix(in srgb, var(--accent2) 35%, var(--line)); }
+.feat.hide { display: none; }
+.feats-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 34px; }
+@media (max-width: 900px) { .feats { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .feats { grid-template-columns: 1fr; } }
 @media (max-width: 900px) {
   .row, .row.flip { grid-template-columns: 1fr; gap: 32px; }
   .row.flip .text { order: 0; }
@@ -145,9 +165,10 @@ footer { padding: 30px 16px 46px; color: var(--muted); font-size: 14px; text-ali
   <div class="wrap nav">
     <a class="brand" href="#"><img src="assets/icon.png" alt="">Dayloom</a>
     <span class="spacer"></span>
-    <a class="link" href="#plan" data-i="nav.features"></a>
+    <a class="link" href="#features" data-i="nav.features"></a>
     <a class="link" href="#team" data-i="nav.team"></a>
     <a class="link" href="#pricing" data-i="nav.pricing"></a>
+    <a class="link" href="leaderboard.html" data-i="lb.title"></a>
     <select class="lang" id="lang" aria-label="Language"></select>
     <a class="btn primary" href="https://github.com/eclk16/dayloom-releases/releases/latest/download/Dayloom.dmg" data-i="nav.download"></a>
   </div>
@@ -236,6 +257,40 @@ footer { padding: 30px 16px 46px; color: var(--muted); font-size: 14px; text-ali
     </div>
   </section>
 
+  <section id="features" class="band">
+    <div class="wrap center">
+      <span class="kicker reveal" data-i="all.kicker"></span>
+      <h2 class="reveal" data-i="all.title"></h2>
+      <p class="sub reveal" data-i="all.sub"></p>
+      <div class="filters" role="tablist">
+        <button class="on" data-f="all" data-i="all.filter.all"></button>
+        <button data-f="free" data-i="all.filter.free"></button>
+        <button data-f="pro" data-i="all.filter.pro"></button>
+      </div>
+      <div class="feats">
+        <div class="feat pro reveal" data-plan="pro"><div class="top"><span class="gl">✦</span><h3 data-i="f.ai.t"></h3></div><span class="pill pro" data-i="all.tag.pro"></span><p data-i="f.ai.d"></p></div>
+        <div class="feat both reveal" data-plan="both"><div class="top"><span class="gl">⇣</span><h3 data-i="f.req.t"></h3></div><span class="pill both" data-i="all.tag.both"></span><p data-i="f.req.d"></p></div>
+        <div class="feat pro reveal" data-plan="pro"><div class="top"><span class="gl">⌘</span><h3 data-i="f.claude.t"></h3></div><span class="pill pro" data-i="all.tag.pro"></span><p data-i="f.claude.d"></p></div>
+        <div class="feat free reveal" data-plan="free"><div class="top"><span class="gl">☀</span><h3 data-i="f.plan.t"></h3></div><span class="pill free" data-i="all.tag.free"></span><p data-i="f.plan.d"></p></div>
+        <div class="feat free reveal" data-plan="free"><div class="top"><span class="gl">◷</span><h3 data-i="f.time.t"></h3></div><span class="pill free" data-i="all.tag.free"></span><p data-i="f.time.d"></p></div>
+        <div class="feat free reveal" data-plan="free"><div class="top"><span class="gl">▦</span><h3 data-i="f.cal.t"></h3></div><span class="pill free" data-i="all.tag.free"></span><p data-i="f.cal.d"></p></div>
+        <div class="feat free reveal" data-plan="free"><div class="top"><span class="gl">▭</span><h3 data-i="f.always.t"></h3></div><span class="pill free" data-i="all.tag.free"></span><p data-i="f.always.d"></p></div>
+        <div class="feat pro reveal" data-plan="pro"><div class="top"><span class="gl">◉</span><h3 data-i="f.team.t"></h3></div><span class="pill pro" data-i="all.tag.pro"></span><p data-i="f.team.d"></p></div>
+        <div class="feat pro reveal" data-plan="pro"><div class="top"><span class="gl">▤</span><h3 data-i="f.reports.t"></h3></div><span class="pill pro" data-i="all.tag.pro"></span><p data-i="f.reports.d"></p></div>
+        <div class="feat pro reveal" data-plan="pro"><div class="top"><span class="gl">✎</span><h3 data-i="f.prompts.t"></h3></div><span class="pill pro" data-i="all.tag.pro"></span><p data-i="f.prompts.d"></p></div>
+        <div class="feat free reveal" data-plan="free"><div class="top"><span class="gl">⌥</span><h3 data-i="f.shortcuts.t"></h3></div><span class="pill free" data-i="all.tag.free"></span><p data-i="f.shortcuts.d"></p></div>
+        <div class="feat free reveal" data-plan="free"><div class="top"><span class="gl">◎</span><h3 data-i="f.browser.t"></h3></div><span class="pill free" data-i="all.tag.free"></span><p data-i="f.browser.d"></p></div>
+        <div class="feat free reveal" data-plan="free"><div class="top"><span class="gl">★</span><h3 data-i="f.levels.t"></h3></div><span class="pill free" data-i="all.tag.free"></span><p data-i="f.levels.d"></p></div>
+        <div class="feat free reveal" data-plan="free"><div class="top"><span class="gl">⛉</span><h3 data-i="f.privacy.t"></h3></div><span class="pill free" data-i="all.tag.free"></span><p data-i="f.privacy.d"></p></div>
+        <div class="feat free reveal" data-plan="free"><div class="top"><span class="gl">Aa</span><h3 data-i="f.lang.t"></h3></div><span class="pill free" data-i="all.tag.free"></span><p data-i="f.lang.d"></p></div>
+      </div>
+      <div class="feats-cta">
+        <a class="btn primary" href="https://github.com/eclk16/dayloom-releases/releases/latest/download/Dayloom.dmg" data-i="all.cta"></a>
+        <a class="btn ghost" href="#pricing" data-i="all.cta.pro"></a>
+      </div>
+    </div>
+  </section>
+
   <section id="pricing">
     <div class="wrap center">
       <span class="kicker reveal" data-i="price.kicker"></span>
@@ -287,6 +342,7 @@ footer { padding: 30px 16px 46px; color: var(--muted); font-size: 14px; text-ali
     <a href="legal/distance-sales.html" data-i="legal.sales"></a>
     <a href="legal/refund.html" data-i="legal.refund"></a>
     <a href="legal/contact.html" data-i="legal.contact"></a>
+    <a href="leaderboard.html" data-i="lb.title"></a>
   </nav>
   <div class="seller" id="seller"></div>
   <div><span data-i="footer.by"></span> · © 2026 Dayloom</div>
@@ -327,6 +383,17 @@ footer { padding: 30px 16px 46px; color: var(--muted); font-size: 14px; text-ali
   });
   sel.addEventListener('change', function () { try { localStorage.setItem('dayloom-lang', sel.value); } catch (e) {} apply(sel.value); });
   apply(detect());
+  document.querySelectorAll('.filters button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.filters button').forEach(function (x) { x.classList.toggle('on', x === b); });
+      var f = b.getAttribute('data-f');
+      document.querySelectorAll('.feat').forEach(function (c) {
+        var p = c.getAttribute('data-plan');
+        var show = f === 'all' || p === f || (p === 'both');
+        c.classList.toggle('hide', !show); if (show) c.classList.add('on');
+      });
+    });
+  });
   var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) {
     es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
   }, { threshold: .12 }) : null;

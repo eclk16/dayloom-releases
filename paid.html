@@ -11,6 +11,6 @@ body{margin:0;min-height:100vh;display:grid;place-items:center;background:var(--
 <script>
 var tr=(navigator.language||'').toLowerCase().indexOf('tr')===0, failed=/failed=1/.test(location.search);
 document.getElementById('i').textContent=failed?'⚠️':'✅';
-document.getElementById('t').textContent=failed?(tr?'Ödeme tamamlanamadı':'Payment didn’t go through'):(tr?'Teşekkürler!':'Thank you!');
-document.getElementById('m').textContent=failed?(tr?'Kartından para çekilmedi. Dayloom’a dönüp tekrar deneyebilirsin.':'You weren’t charged. Go back to Dayloom and try again.'):(tr?'Ödemen alındı. Dayloom’a dön; Pro birkaç saniye içinde açılır.':'Your payment went through. Go back to Dayloom — Pro turns on in a few seconds.');
+document.getElementById('t').textContent=failed?(tr?'Ödeme tamamlanamadı':'The payment didn’t go through'):(tr?'Teşekkür ederiz':'Thank you');
+document.getElementById('m').textContent=failed?(tr?'Kartınızdan ücret alınmadı. Dayloom’a dönüp yeniden deneyebilirsiniz.':'You haven’t been charged. You can return to Dayloom and try again.'):(tr?'Ödemeniz alındı. Dayloom’a dönebilirsiniz; Pro birkaç saniye içinde etkinleşir.':'Your payment has been received. You can return to Dayloom, where Pro will be active in a few seconds.');
 </script></body></html>
