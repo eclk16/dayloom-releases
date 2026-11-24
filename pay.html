@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dayloom Pro — Payment</title><link rel="icon" href="assets/icon.png">
+<style>
+:root{--bg:#f7f6f3;--card:#fff;--text:#17171a;--muted:#62626b;--line:rgba(0,0,0,.08)}
+@media (prefers-color-scheme:dark){:root{--bg:#0e0e11;--card:#1b1b21;--text:#f3f3f6;--muted:#a3a3ad;--line:rgba(255,255,255,.09)}}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding:28px 16px}
+.head{display:flex;align-items:center;gap:12px;margin-bottom:18px}.head img{width:40px;height:40px;border-radius:10px}
+.head b{font-size:19px}.head span{color:var(--muted);font-size:14px;display:block}
+.box{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.err{color:#d33;padding:24px;text-align:center}
+</style></head><body><div class="wrap">
+<div class="head"><img src="assets/icon.png" alt=""><div><b>Dayloom Pro</b><span id="sub">Secure payment by PayTR</span></div></div>
+<div class="box" id="box"></div></div>
+<script src="https://www.paytr.com/js/iframeResizer.min.js"></script>
+<script>
+(function(){
+  var tr=(navigator.language||'').toLowerCase().indexOf('tr')===0;
+  document.getElementById('sub').textContent=tr?'PayTR güvencesiyle ödeme':'Secure payment by PayTR';
+  var t=location.hash.slice(1), box=document.getElementById('box');
+  if(!/^[A-Za-z0-9]+$/.test(t)){box.innerHTML='<div class="err">'+(tr?'Ödeme bağlantısı geçersiz. Uygulamadan yeniden deneyin.':'This payment link is invalid. Please try again from the app.')+'</div>';return;}
+  var f=document.createElement('iframe');f.src='https://www.paytr.com/odeme/guvenli/'+t;f.id='paytriframe';f.frameBorder='0';f.scrolling='no';f.style.width='100%';f.style.minHeight='600px';
+  box.appendChild(f);if(window.iFrameResize)iFrameResize({},'#paytriframe');
+})();
+</script></body></html>

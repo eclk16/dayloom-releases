@@ -1,89 +1,143 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dayloom — Gününü planla, kilitle, bitir</title>
-<meta name="description" content="Dayloom, Mac için günlük planlama uygulaması: işlerini sabah planla, günü kilitle, iş yüküne göre saatlerine yay. Zaman takibi, ekip panosu, yapay zekâyla planlama ve Claude Code ile görev çözme.">
-<meta property="og:title" content="Dayloom — Gününü planla, kilitle, bitir">
-<meta property="og:description" content="Mac için günlük planlama: plan, odak, zaman takibi, ekip ve yapay zekâ.">
-<meta property="og:image" content="assets/icon.png">
+<title>Dayloom — Plan your day on the Mac</title>
+<meta name="description" content="Dayloom is a Mac app for planning your day: write your tasks, lock in the day, track time, plan with AI and work as a team.">
+<meta property="og:title" content="Dayloom">
+<meta property="og:description" content="Plan your day. Lock it in. Get it done.">
+<meta property="og:image" content="shots/en/home.png">
 <link rel="icon" href="assets/icon.png">
 <style>
 :root {
-  --bg: #f6f5f2; --card: #ffffff; --text: #1d1d1f; --muted: #6e6e73; --line: rgba(0,0,0,.08);
-  --accent: #e8505b; --accent2: #7c5cff; --green: #2fb36b; --shadow: 0 10px 30px rgba(0,0,0,.08);
+  --bg: #f7f6f3; --bg2: #efede8; --card: #ffffff; --text: #17171a; --muted: #62626b; --line: rgba(0,0,0,.08);
+  --accent: #e8505b; --accent2: #7c5cff; --accent3: #18a5d6; --green: #2fb36b;
+  --shadow: 0 30px 80px -20px rgba(30,20,60,.35), 0 8px 24px rgba(0,0,0,.08);
 }
 @media (prefers-color-scheme: dark) {
-  :root { --bg: #111113; --card: #1c1c1f; --text: #f2f2f4; --muted: #a1a1a8; --line: rgba(255,255,255,.08); --shadow: 0 10px 30px rgba(0,0,0,.4); }
+  :root { --bg: #0e0e11; --bg2: #16161b; --card: #1b1b21; --text: #f3f3f6; --muted: #a3a3ad; --line: rgba(255,255,255,.09);
+          --shadow: 0 30px 80px -20px rgba(0,0,0,.8), 0 8px 24px rgba(0,0,0,.4); }
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Noto Sans", sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+html[dir="rtl"] body { font-family: -apple-system, "SF Arabic", "Geeza Pro", "Noto Naskh Arabic", "Noto Nastaliq Urdu", sans-serif; }
 a { color: inherit; }
-.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
-header.top { position: sticky; top: 0; z-index: 10; backdrop-filter: saturate(180%) blur(14px); -webkit-backdrop-filter: saturate(180%) blur(14px); background: color-mix(in srgb, var(--bg) 82%, transparent); border-bottom: 1px solid var(--line); }
-.nav { display: flex; align-items: center; gap: 16px; height: 60px; }
-.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; text-decoration: none; font-size: 18px; }
-.brand img { width: 30px; height: 30px; border-radius: 8px; }
-.nav .spacer { flex: 1; }
-.nav a.link { text-decoration: none; color: var(--muted); font-size: 14px; }
-.lang { border: 1px solid var(--line); background: var(--card); color: var(--text); border-radius: 999px; padding: 5px 12px; font-size: 13px; cursor: pointer; }
-.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 12px; font-weight: 600; text-decoration: none; border: 0; cursor: pointer; font-size: 16px; }
-.btn.primary { background: var(--accent); color: #fff; box-shadow: 0 8px 20px color-mix(in srgb, var(--accent) 35%, transparent); }
-.btn.primary:hover { filter: brightness(1.05); }
+img { max-width: 100%; display: block; }
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+
+header.top { position: sticky; top: 0; z-index: 20; backdrop-filter: saturate(180%) blur(16px); -webkit-backdrop-filter: saturate(180%) blur(16px);
+  background: color-mix(in srgb, var(--bg) 78%, transparent); border-bottom: 1px solid var(--line); }
+.nav { display: flex; align-items: center; gap: 18px; height: 62px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 750; text-decoration: none; font-size: 19px; }
+.brand img { width: 32px; height: 32px; border-radius: 8px; }
+.spacer { flex: 1; }
+.nav a.link { text-decoration: none; color: var(--muted); font-size: 15px; }
+.nav a.link:hover { color: var(--text); }
+select.lang { appearance: none; -webkit-appearance: none; border: 1px solid var(--line); background-color: var(--card); color: var(--text);
+  border-radius: 999px; padding: 6px 30px 6px 14px; font: inherit; font-size: 14px; cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+  background-position: calc(100% - 16px) 55%, calc(100% - 11px) 55%; background-size: 5px 5px; background-repeat: no-repeat; }
+html[dir="rtl"] select.lang { padding: 6px 14px 6px 30px; background-position: 16px 55%, 11px 55%; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; border-radius: 14px; font-weight: 650; text-decoration: none; font-size: 17px; transition: transform .15s, filter .15s; }
+.btn:hover { transform: translateY(-1px); }
+.btn.primary { color: #fff; background: linear-gradient(135deg, var(--accent), #f0734d); box-shadow: 0 12px 30px -8px color-mix(in srgb, var(--accent) 60%, transparent); }
 .btn.ghost { background: var(--card); border: 1px solid var(--line); }
-.hero { padding: 72px 0 40px; text-align: center; }
-.hero img.icon { width: 112px; height: 112px; border-radius: 26px; box-shadow: var(--shadow); }
-.hero h1 { font-size: clamp(34px, 6vw, 58px); line-height: 1.08; margin: 22px 0 14px; letter-spacing: -.02em; }
-.hero h1 span { background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.hero p.lead { font-size: clamp(17px, 2.2vw, 20px); color: var(--muted); max-width: 680px; margin: 0 auto 28px; }
+.btn svg { width: 18px; height: 18px; }
+.nav .btn { padding: 8px 16px; font-size: 14px; border-radius: 10px; }
+
+.hero { position: relative; padding: 84px 0 40px; text-align: center; }
+.glow { position: absolute; inset: -120px -20% auto; height: 760px; z-index: -1; pointer-events: none;
+  background: radial-gradient(40% 40% at 30% 30%, color-mix(in srgb, var(--accent) 30%, transparent), transparent 70%),
+              radial-gradient(40% 40% at 72% 25%, color-mix(in srgb, var(--accent2) 30%, transparent), transparent 70%),
+              radial-gradient(35% 35% at 50% 70%, color-mix(in srgb, var(--accent3) 18%, transparent), transparent 70%);
+  filter: blur(20px); }
+.badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+.badge b { color: var(--accent2); }
+.hero h1 { font-size: clamp(40px, 7vw, 76px); line-height: 1.04; margin: 22px auto 18px; letter-spacing: -.03em; max-width: 900px; font-weight: 800; }
+.hero h1 .g { background: linear-gradient(90deg, var(--accent), var(--accent2) 60%, var(--accent3)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lead { font-size: clamp(18px, 2.3vw, 21px); color: var(--muted); max-width: 720px; margin: 0 auto 32px; }
 .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-.meta { margin-top: 14px; color: var(--muted); font-size: 13px; }
-.mock { margin: 48px auto 0; max-width: 860px; background: var(--card); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow); overflow: hidden; text-align: left; }
-.mock .bar { height: 36px; display: flex; align-items: center; gap: 7px; padding: 0 14px; border-bottom: 1px solid var(--line); }
-.mock .bar i { width: 11px; height: 11px; border-radius: 50%; display: block; }
-.mock .body { display: grid; grid-template-columns: 180px 1fr; min-height: 300px; }
-.mock .side { border-right: 1px solid var(--line); padding: 14px 10px; font-size: 13px; color: var(--muted); }
-.mock .side div { padding: 6px 10px; border-radius: 8px; }
-.mock .side .on { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--text); font-weight: 600; }
-.mock .main { padding: 18px 22px; }
-.mock .now { border-radius: 12px; padding: 14px; background: color-mix(in srgb, var(--accent2) 10%, transparent); margin-bottom: 12px; }
-.mock .now small { color: var(--accent2); font-weight: 700; letter-spacing: .05em; font-size: 11px; }
-.mock .now b { display: block; font-size: 17px; margin: 4px 0 8px; }
-.mock .prog { height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
-.mock .prog span { display: block; height: 100%; width: 62%; background: var(--green); }
-.mock .row { display: flex; align-items: center; gap: 10px; padding: 9px 2px; border-bottom: 1px solid var(--line); font-size: 14px; }
-.mock .row:last-child { border-bottom: 0; }
-.mock .chk { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--muted); flex: none; }
-.mock .chk.done { background: var(--green); border-color: var(--green); }
-.mock .row .t { flex: 1; }
-.mock .row .t.done { text-decoration: line-through; color: var(--muted); }
-.mock .row .time { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 12px; }
-.pill { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
-section { padding: 56px 0; }
-section h2 { font-size: clamp(26px, 4vw, 36px); margin: 0 0 10px; letter-spacing: -.01em; text-align: center; }
-section p.sub { color: var(--muted); text-align: center; max-width: 640px; margin: 0 auto 32px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
-.card .ico { width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; font-size: 20px; margin-bottom: 12px; }
-.card h3 { margin: 0 0 6px; font-size: 17px; }
-.card p { margin: 0; color: var(--muted); font-size: 14.5px; }
-.steps { counter-reset: s; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
-.steps .card { position: relative; padding-top: 46px; }
-.steps .card::before { counter-increment: s; content: counter(s); position: absolute; top: 16px; left: 22px; width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; font-size: 13px; display: grid; place-items: center; }
-.band { background: var(--card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.final { text-align: center; }
-footer { padding: 30px 0 40px; color: var(--muted); font-size: 13px; text-align: center; }
-footer a { color: var(--muted); }
-@media (max-width: 640px) {
-  .mock .body { grid-template-columns: 1fr; }
-  .mock .side { display: none; }
+.meta { margin-top: 16px; color: var(--muted); font-size: 14px; }
+
+.stage { position: relative; margin: 64px auto 0; max-width: 1120px; }
+.shot { border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--line); background: var(--card); width: 100%; }
+.stage .panel { position: absolute; width: 27%; right: -3%; bottom: -8%; border-radius: 16px; transform: rotate(2deg); }
+html[dir="rtl"] .stage .panel { right: auto; left: -3%; transform: rotate(-2deg); }
+.float { animation: float 7s ease-in-out infinite; }
+@keyframes float { 0%,100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+
+section { padding: 96px 0; }
+.kicker { display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent2); margin-bottom: 10px; }
+h2 { font-size: clamp(30px, 4.4vw, 46px); line-height: 1.1; margin: 0 0 14px; letter-spacing: -.02em; }
+.sub { color: var(--muted); font-size: 18px; max-width: 640px; }
+.center { text-align: center; } .center .sub { margin: 0 auto; }
+
+.row { display: grid; grid-template-columns: 1fr 1.3fr; gap: 56px; align-items: center; }
+.row.flip { grid-template-columns: 1.3fr 1fr; }
+.row.flip .text { order: 2; }
+.points { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 14px; }
+.points li { display: flex; gap: 12px; align-items: flex-start; color: var(--muted); }
+.points li::before { content: ""; flex: none; width: 22px; height: 22px; margin-top: 2px; border-radius: 50%;
+  background: color-mix(in srgb, var(--green) 18%, transparent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232fb36b' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center/14px no-repeat; }
+
+.band { background: var(--bg2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; text-align: start; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 26px; }
+.card .ico { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; font-size: 22px; margin-bottom: 14px; }
+.card h3 { margin: 0 0 6px; font-size: 18px; }
+.card p { margin: 0; color: var(--muted); font-size: 15.5px; }
+
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 44px; }
+.cap { margin-top: 12px; color: var(--muted); font-size: 15px; text-align: center; }
+
+.final { text-align: center; padding: 110px 0; position: relative; overflow: hidden; }
+.final .icon { width: 108px; height: 108px; border-radius: 26px; margin: 0 auto 26px; box-shadow: var(--shadow); }
+footer .legal { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 18px; margin-bottom: 12px; }
+footer .legal a { color: var(--muted); text-decoration: none; } footer .legal a:hover { color: var(--text); text-decoration: underline; }
+footer .seller, footer .cards { margin: 6px 0; font-size: 13px; }
+footer { padding: 30px 16px 46px; color: var(--muted); font-size: 14px; text-align: center; }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.on { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .float { animation: none; } .btn:hover { transform: none; } }
+
+
+.plans { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; max-width: 900px; margin: 44px auto 0; text-align: start; }
+.plan { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 32px; display: flex; flex-direction: column; }
+.plan.pro { border: 2px solid transparent; background: linear-gradient(var(--card), var(--card)) padding-box, linear-gradient(135deg, var(--accent), var(--accent2)) border-box; position: relative; box-shadow: var(--shadow); }
+.plan .tag { position: absolute; top: -13px; inset-inline-end: 24px; background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 999px; letter-spacing: .03em; }
+.plan h3 { margin: 0; font-size: 22px; }
+.plan .desc { color: var(--muted); margin: 6px 0 20px; font-size: 15.5px; }
+.price { display: flex; align-items: baseline; gap: 6px; margin-bottom: 22px; }
+.price b { font-size: 46px; letter-spacing: -.02em; }
+.price span { color: var(--muted); }
+.plan ul { list-style: none; padding: 0; margin: 0 0 26px; display: grid; gap: 11px; flex: 1; }
+.plan li { display: flex; gap: 10px; align-items: flex-start; font-size: 15.5px; }
+.plan li::before { content: "✓"; flex: none; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 800; margin-top: 2px;
+  color: var(--green); background: color-mix(in srgb, var(--green) 16%, transparent); }
+.plan.pro li::before { color: var(--accent2); background: color-mix(in srgb, var(--accent2) 16%, transparent); }
+.plan li.head { font-weight: 650; }
+.plan li.head::before { content: "★"; }
+.plan .btn { justify-content: center; }
+.note { color: var(--muted); font-size: 14px; margin-top: 22px; }
+@media (max-width: 760px) { .plans { grid-template-columns: 1fr; } }
+@media (max-width: 900px) {
+  .row, .row.flip { grid-template-columns: 1fr; gap: 32px; }
+  .row.flip .text { order: 0; }
+  .grid { grid-template-columns: 1fr 1fr; }
+  .duo { grid-template-columns: 1fr; }
   .nav a.link { display: none; }
+  .stage .panel { width: 34%; right: -1%; }
 }
-[data-en] { display: none; }
-html[lang="en"] [data-tr] { display: none; }
-html[lang="en"] [data-en] { display: revert; }
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+  section { padding: 68px 0; }
+  .hero { padding-top: 56px; }
+  .nav .btn { display: none; }
+  .stage .panel { display: none; }
+}
 </style>
 </head>
 <body>
@@ -91,103 +145,188 @@ html[lang="en"] [data-en] { display: revert; }
   <div class="wrap nav">
     <a class="brand" href="#"><img src="assets/icon.png" alt="">Dayloom</a>
     <span class="spacer"></span>
-    <a class="link" href="#features"><span data-tr>Özellikler</span><span data-en>Features</span></a>
-    <a class="link" href="#team"><span data-tr>Ekipler</span><span data-en>Teams</span></a>
-    <a class="link" href="#download"><span data-tr>İndir</span><span data-en>Download</span></a>
-    <button class="lang" id="lang" aria-label="Language">EN</button>
+    <a class="link" href="#plan" data-i="nav.features"></a>
+    <a class="link" href="#team" data-i="nav.team"></a>
+    <a class="link" href="#pricing" data-i="nav.pricing"></a>
+    <select class="lang" id="lang" aria-label="Language"></select>
+    <a class="btn primary" href="https://github.com/eclk16/dayloom-releases/releases/latest/download/Dayloom.dmg" data-i="nav.download"></a>
   </div>
 </header>
 
 <main>
   <div class="wrap hero">
-    <img class="icon" src="assets/icon.png" alt="Dayloom">
-    <h1><span data-tr>Gününü planla. <span>Kilitle. Bitir.</span></span><span data-en>Plan your day. <span>Lock it in. Get it done.</span></span></h1>
-    <p class="lead">
-      <span data-tr>Dayloom, sabah işlerini yazdığın, günü kilitlediğin ve iş yüküne göre saatlerine yaydığı bir Mac uygulaması. Her an sıradaki işi bilirsin, menü çubuğunda ve her masaüstünde.</span>
-      <span data-en>Dayloom is a Mac app where you write down your tasks in the morning, lock in the day, and it spreads them across your hours by workload. You always know what's next — in the menu bar and on every desktop.</span>
-    </p>
+    <div class="glow"></div>
+    <span class="badge"><b>✦</b> <span data-i="hero.badge"></span></span>
+    <h1><span data-i="hero.title1"></span> <span class="g" data-i="hero.title2"></span></h1>
+    <p class="lead" data-i="hero.lead"></p>
     <div class="cta">
       <a class="btn primary" href="https://github.com/eclk16/dayloom-releases/releases/latest/download/Dayloom.dmg">
-        <span data-tr>Mac için indir</span><span data-en>Download for Mac</span>
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.8c-1.6 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7 2-1.1 2.8-2.3c.9-1.3 1.2-2.5 1.3-2.6-.1 0-2.5-1-2.5-3.8zM14.1 5.8c.6-.8 1.1-1.8 1-2.8-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.7-1 2.7 1 .1 2-.5 2.7-1.3z"/></svg>
+        <span data-i="hero.download"></span>
       </a>
-      <a class="btn ghost" href="#features"><span data-tr>Neler yapabilir?</span><span data-en>What it does</span></a>
+      <a class="btn ghost" href="#plan" data-i="hero.more"></a>
     </div>
-    <div class="meta"><span data-tr>Ücretsiz · macOS 14 ve üzeri · Apple tarafından onaylı · Kendiliğinden güncellenir</span><span data-en>Free · macOS 14 or later · Notarized by Apple · Updates itself</span></div>
-
-    <div class="mock" aria-hidden="true">
-      <div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div>
-      <div class="body">
-        <div class="side">
-          <div><span data-tr>Ana Sayfa</span><span data-en>Home</span></div>
-          <div class="on"><span data-tr>Bugün</span><span data-en>Today</span></div>
-          <div><span data-tr>Gelen Kutusu</span><span data-en>Inbox</span></div>
-          <div><span data-tr>Takvim</span><span data-en>Calendar</span></div>
-          <div><span data-tr>Zaman Takibi</span><span data-en>Time tracking</span></div>
-          <div><span data-tr>Yapay Zekâyla Planla</span><span data-en>Plan with AI</span></div>
-        </div>
-        <div class="main">
-          <div class="now">
-            <small><span data-tr>ŞİMDİ</span><span data-en>NOW</span></small>
-            <b><span data-tr>Müşteri sunumunu hazırla</span><span data-en>Prepare the client presentation</span></b>
-            <div class="prog"><span></span></div>
-          </div>
-          <div class="row"><span class="chk done"></span><span class="t done"><span data-tr>Haftalık raporu gönder</span><span data-en>Send the weekly report</span></span><span class="time">09:00–10:10</span></div>
-          <div class="row"><span class="chk"></span><span class="t"><span data-tr>Müşteri sunumunu hazırla</span><span data-en>Prepare the client presentation</span></span><span class="time">10:10–12:30</span><span class="pill" style="background:#fde7c8;color:#b26a00">⚡ 6</span></div>
-          <div class="row"><span class="chk"></span><span class="t"><span data-tr>Ana sayfa banner'ını güncelle</span><span data-en>Update the homepage banner</span></span><span class="time">13:30–15:00</span><span class="pill" style="background:#e3dcff;color:#5a3fd6">Claude</span></div>
-          <div class="row"><span class="chk"></span><span class="t"><span data-tr>Ekip toplantısı</span><span data-en>Team meeting</span></span><span class="time">15:00–16:00</span></div>
-        </div>
-      </div>
+    <div class="meta" data-i="hero.meta"></div>
+    <div class="stage reveal">
+      <img class="shot" data-shot="home" alt="Dayloom">
+      <img class="shot panel float" data-shot="panel" alt="">
     </div>
   </div>
 
-  <section id="features">
-    <div class="wrap">
-      <h2><span data-tr>Bir günde ihtiyacın olan her şey</span><span data-en>Everything a working day needs</span></h2>
-      <p class="sub"><span data-tr>Tek başına kullan ya da ekibinle. Verilerin Mac'inde kalır; ekip özellikleri isteğe bağlı.</span><span data-en>Use it on your own or with your team. Your data stays on your Mac; team features are optional.</span></p>
+  <section id="plan">
+    <div class="wrap row">
+      <div class="text reveal">
+        <span class="kicker" data-i="plan.kicker"></span>
+        <h2 data-i="plan.title"></h2>
+        <p class="sub" data-i="plan.sub"></p>
+        <ul class="points"><li data-i="plan.p1"></li><li data-i="plan.p2"></li><li data-i="plan.p3"></li></ul>
+      </div>
+      <img class="shot reveal" data-shot="today" alt="">
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap row flip">
+      <div class="text reveal">
+        <span class="kicker" data-i="time.kicker"></span>
+        <h2 data-i="time.title"></h2>
+        <p class="sub" data-i="time.sub"></p>
+        <ul class="points"><li data-i="time.p1"></li><li data-i="time.p2"></li><li data-i="time.p3"></li></ul>
+      </div>
+      <img class="shot reveal" data-shot="time" alt="">
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap row">
+      <div class="text reveal">
+        <span class="kicker" data-i="ai.kicker"></span>
+        <h2 data-i="ai.title"></h2>
+        <p class="sub" data-i="ai.sub"></p>
+        <ul class="points"><li data-i="ai.p1"></li><li data-i="ai.p2"></li><li data-i="ai.p3"></li></ul>
+      </div>
+      <img class="shot reveal" data-shot="ai-proposals" alt="">
+    </div>
+  </section>
+
+  <section class="band" id="team">
+    <div class="wrap center">
+      <span class="kicker reveal" data-i="team.kicker"></span>
+      <h2 class="reveal" data-i="team.title"></h2>
+      <p class="sub reveal" data-i="team.sub"></p>
       <div class="grid">
-        <div class="card"><div class="ico" style="background:#ffe4e6">🧵</div><h3><span data-tr>Planla ve kilitle</span><span data-en>Plan and lock in</span></h3><p><span data-tr>Sabah işlerini yaz, iş yüküne göre sırala, "Günümü Başlat" de. Dayloom işleri mesai saatlerine ve molana göre yayar.</span><span data-en>Write your tasks, order them by workload and press Start My Day. Dayloom spreads them over your hours and lunch break.</span></p></div>
-        <div class="card"><div class="ico" style="background:#e0f2fe">⏱️</div><h3><span data-tr>Zaman takibi</span><span data-en>Time tracking</span></h3><p><span data-tr>Proje, görev ya da başlıkla tek tıkla başlat. Unuttuğun işleri sonradan ekle; kayıtlar asla çakışmaz, aralar mola olarak görünür.</span><span data-en>Start with one click for a project, task or title. Add what you forgot later; entries never overlap and gaps show as breaks.</span></p></div>
-        <div class="card"><div class="ico" style="background:#ede9fe">✨</div><h3><span data-tr>Yapay zekâyla planla</span><span data-en>Plan with AI</span></h3><p><span data-tr>Aklındakileri yaz; PDF, Excel, Word, XMind ya da ekran görüntüsü ekle. Claude hepsini görevlere çevirir, sen onaylarsın.</span><span data-en>Write it down and add PDFs, spreadsheets, documents, mind maps or screenshots. Claude turns them into tasks; you approve.</span></p></div>
-        <div class="card"><div class="ico" style="background:#f3e8ff">💻</div><h3><span data-tr>Claude Code ile çöz</span><span data-en>Solve with Claude Code</span></h3><p><span data-tr>Yazılım görevlerini ayrı bir dalda Claude Code çözer, testleri çalıştırır, pull request açar ve görevi bitirir.</span><span data-en>Claude Code solves software tasks on their own branch, runs the tests, opens a pull request and marks the task done.</span></p></div>
-        <div class="card"><div class="ico" style="background:#dcfce7">🏆</div><h3><span data-tr>Seviyeler ve rozetler</span><span data-en>Levels and badges</span></h3><p><span data-tr>Zamanında biten işler, seriler ve 200'ü aşkın rozetle motivasyon. Gürültüsüz, abartısız.</span><span data-en>Finished-on-time work, streaks and 200+ badges keep you going — quietly.</span></p></div>
-        <div class="card"><div class="ico" style="background:#fef3c7">🖥️</div><h3><span data-tr>Hep görünür</span><span data-en>Always in sight</span></h3><p><span data-tr>Menü çubuğunda şu anki işin, her masaüstünde küçük pencere ve widget'lar. Uygulamaya girmeden ilerle.</span><span data-en>Your current task in the menu bar, a small panel on every desktop and widgets. Keep going without opening the app.</span></p></div>
+        <div class="card reveal"><div class="ico" style="background:#ffe4e6">👥</div><h3 data-i="team.c1t"></h3><p data-i="team.c1"></p></div>
+        <div class="card reveal"><div class="ico" style="background:#e0f2fe">📊</div><h3 data-i="team.c2t"></h3><p data-i="team.c2"></p></div>
+        <div class="card reveal"><div class="ico" style="background:#f3e8ff">💻</div><h3 data-i="team.c3t"></h3><p data-i="team.c3"></p></div>
+        <div class="card reveal"><div class="ico" style="background:#dcfce7">🏆</div><h3 data-i="team.c4t"></h3><p data-i="team.c4"></p></div>
+        <div class="card reveal"><div class="ico" style="background:#fef3c7">🖥️</div><h3 data-i="team.c5t"></h3><p data-i="team.c5"></p></div>
+        <div class="card reveal"><div class="ico" style="background:#e7e5ff">🔒</div><h3 data-i="team.c6t"></h3><p data-i="team.c6"></p></div>
       </div>
     </div>
   </section>
 
-  <section id="team" class="band">
-    <div class="wrap">
-      <h2><span data-tr>Ekipler için, gözetim için değil</span><span data-en>For teams, not for surveillance</span></h2>
-      <p class="sub"><span data-tr>Yöneticiler görev atar, ekip panosunda günü görür, raporları dışa aktarır. Herkes kendi gününü yönetmeye devam eder.</span><span data-en>Managers assign tasks, see the day on the team board and export reports. Everyone keeps running their own day.</span></p>
-      <div class="steps">
-        <div class="card"><h3><span data-tr>Ata</span><span data-en>Assign</span></h3><p><span data-tr>Birden fazla kişiye, tekrarlı ve dosyalarıyla. Gerekirse Claude Code'un otomatik çözmesine izin ver.</span><span data-en>To several people, recurring, with files. Optionally let Claude Code solve it automatically.</span></p></div>
-        <div class="card"><h3><span data-tr>Canlı izle</span><span data-en>Follow live</span></h3><p><span data-tr>Kim gününe başladı, şu an hangi işte, ne bitti. Gerekirse işi notla geri gönder.</span><span data-en>Who started their day, what they're on, what's done. Send work back with a note when needed.</span></p></div>
-        <div class="card"><h3><span data-tr>Raporla</span><span data-en>Report</span></h3><p><span data-tr>Süre ve iş raporları: kişi, proje, gün gün; canlı ve manuel ayrı. CSV olarak dışa aktar.</span><span data-en>Time and work reports by person, project and day; live and manual apart. Export as CSV.</span></p></div>
+  <section>
+    <div class="wrap center">
+      <span class="kicker reveal" data-i="look.kicker"></span>
+      <h2 class="reveal" data-i="look.title"></h2>
+      <div class="duo">
+        <div class="reveal"><img class="shot" data-shot="today-dark" alt=""><div class="cap" data-i="look.c1"></div></div>
+        <div class="reveal"><img class="shot" data-shot="rewards" alt=""><div class="cap" data-i="look.c2"></div></div>
       </div>
     </div>
   </section>
 
-  <section id="download" class="final">
+  <section id="pricing">
+    <div class="wrap center">
+      <span class="kicker reveal" data-i="price.kicker"></span>
+      <h2 class="reveal" data-i="price.title"></h2>
+      <p class="sub reveal" data-i="price.sub"></p>
+      <div class="plans">
+        <div class="plan reveal">
+          <h3>Free</h3>
+          <p class="desc" data-i="price.free.desc"></p>
+          <div class="price"><b>$0</b><span data-i="price.forever"></span></div>
+          <ul>
+            <li data-i="price.f1"></li><li data-i="price.f2"></li><li data-i="price.f3"></li>
+            <li data-i="price.f4"></li><li data-i="price.f5"></li><li data-i="price.f6"></li>
+          </ul>
+          <a class="btn ghost" href="https://github.com/eclk16/dayloom-releases/releases/latest/download/Dayloom.dmg" data-i="price.free.cta"></a>
+        </div>
+        <div class="plan pro reveal">
+          <span class="tag" data-i="price.popular"></span>
+          <h3>Pro</h3>
+          <p class="desc" data-i="price.pro.desc"></p>
+          <div class="price"><b>$9.99</b><span data-i="price.month"></span></div>
+          <ul>
+            <li class="head" data-i="price.p0"></li>
+            <li data-i="price.p1"></li><li data-i="price.p2"></li><li data-i="price.p3"></li>
+            <li data-i="price.p4"></li><li data-i="price.p5"></li>
+          </ul>
+          <a class="btn primary" href="https://github.com/eclk16/dayloom-releases/releases/latest/download/Dayloom.dmg" data-i="price.pro.cta"></a>
+        </div>
+      </div>
+      <p class="note reveal" data-i="price.note"></p>
+    </div>
+  </section>
+
+  <section class="final band">
     <div class="wrap">
-      <h2><span data-tr>Bugün dene</span><span data-en>Try it today</span></h2>
-      <p class="sub"><span data-tr>Ücretsiz. İndir, aç, sabah işlerini yaz. 16 dilde.</span><span data-en>Free. Download, open, write down your morning. In 16 languages.</span></p>
-      <a class="btn primary" href="https://github.com/eclk16/dayloom-releases/releases/latest/download/Dayloom.dmg"><span data-tr>Dayloom'u indir</span><span data-en>Download Dayloom</span></a>
-      <div class="meta"><a href="https://github.com/eclk16/dayloom-releases/releases"><span data-tr>Sürüm notları</span><span data-en>Release notes</span></a></div>
+      <img class="icon" src="assets/icon.png" alt="">
+      <h2 data-i="final.title"></h2>
+      <p class="sub" style="margin:0 auto 30px" data-i="final.sub"></p>
+      <a class="btn primary" href="https://github.com/eclk16/dayloom-releases/releases/latest/download/Dayloom.dmg" data-i="final.cta"></a>
+      <div class="meta"><a href="https://github.com/eclk16/dayloom-releases/releases" data-i="final.notes"></a></div>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap"><span data-tr>Geliştirici: Emre Çolak</span><span data-en>Made by Emre Çolak</span> · © 2026 Dayloom</div>
+  <nav class="legal">
+    <a href="legal/privacy.html" data-i="legal.privacy"></a>
+    <a href="legal/terms.html" data-i="legal.terms"></a>
+    <a href="legal/distance-sales.html" data-i="legal.sales"></a>
+    <a href="legal/refund.html" data-i="legal.refund"></a>
+    <a href="legal/contact.html" data-i="legal.contact"></a>
+  </nav>
+  <div class="seller"><span data-seller="name"></span> · <span data-seller="address"></span> · <span data-seller="email"></span> · <span data-seller="phone"></span></div>
+  <div><span data-i="footer.by"></span> · © 2026 Dayloom</div>
+  <div class="cards" aria-label="Payment">🔒 PayTR · VISA · Mastercard · Troy</div>
 </footer>
 
+<script src="legal/seller.js"></script>
+<script src="i18n.js"></script>
 <script>
 (function () {
-  var html = document.documentElement, btn = document.getElementById('lang');
-  function set(l) { html.lang = l; btn.textContent = l === 'tr' ? 'EN' : 'TR'; try { localStorage.setItem('dayloom-lang', l); } catch (e) {} }
-  var saved = null; try { saved = localStorage.getItem('dayloom-lang'); } catch (e) {}
-  set(saved || ((navigator.language || 'tr').toLowerCase().startsWith('tr') ? 'tr' : 'en'));
-  btn.addEventListener('click', function () { set(html.lang === 'tr' ? 'en' : 'tr'); });
+  var I = window.DAYLOOM_I18N, sel = document.getElementById('lang'), html = document.documentElement;
+  var order = ["en","tr","de","fr","es","pt","id","zh-Hans","ja","ko","ar","ur","ru","hi","bn","vi"];
+  order.forEach(function (c) { if (I[c]) { var o = document.createElement('option'); o.value = c; o.textContent = I[c]._name; sel.appendChild(o); } });
+  function detect() {
+    var saved = null; try { saved = localStorage.getItem('dayloom-lang'); } catch (e) {}
+    if (saved && I[saved]) return saved;
+    var prefs = navigator.languages || [navigator.language || 'en'];
+    for (var i = 0; i < prefs.length; i++) {
+      var p = (prefs[i] || '').toLowerCase();
+      if (p.indexOf('zh') === 0) return 'zh-Hans';
+      if (I[p.split('-')[0]]) return p.split('-')[0];
+    }
+    return 'en';
+  }
+  function apply(l) {
+    var d = I[l], en = I.en;
+    html.lang = l; html.dir = (l === 'ar' || l === 'ur') ? 'rtl' : 'ltr';
+    document.querySelectorAll('[data-i]').forEach(function (el) { var k = el.getAttribute('data-i'); el.textContent = d[k] || en[k] || ''; });
+    document.querySelectorAll('[data-shot]').forEach(function (el) { el.src = 'shots/' + (l === 'tr' ? 'tr' : 'en') + '/' + el.getAttribute('data-shot') + '.png'; });
+    document.title = 'Dayloom — ' + (d['hero.title1'] || en['hero.title1']) + ' ' + (d['hero.title2'] || en['hero.title2']);
+    sel.value = l;
+  }
+  var S = window.DAYLOOM_SELLER || {};
+  document.querySelectorAll('[data-seller]').forEach(function (el) { el.textContent = S[el.getAttribute('data-seller')] || ''; });
+  sel.addEventListener('change', function () { try { localStorage.setItem('dayloom-lang', sel.value); } catch (e) {} apply(sel.value); });
+  apply(detect());
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: .12 }) : null;
+  document.querySelectorAll('.reveal').forEach(function (el) { io ? io.observe(el) : el.classList.add('on'); });
 })();
 </script>
 </body>
