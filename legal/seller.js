@@ -1,11 +1,11 @@
-// Satıcı bilgileri: tüm yasal sayfalar ve alt bilgi buradan doldurulur.
+// Satıcı bilgileri: tüm yasal sayfalar ve alt bilgi buradan doldurulur (boş alanlar gösterilmez).
 window.DAYLOOM_SELLER = {
-  name: "[Satıcı adı / şirket unvanı]",
-  address: "[Açık adres]",
-  taxOffice: "[Vergi dairesi]",
-  taxId: "[Vergi / T.C. kimlik no]",
+  name: "Emre Çolak",
+  address: "",
+  taxOffice: "",
+  taxId: "",
   mersis: "",
-  email: "[İletişim e-postası]",
-  phone: "[Telefon]",
+  email: "clkofis@gmail.com",
+  phone: "",
   kep: ""
 };

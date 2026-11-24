@@ -288,7 +288,7 @@ footer { padding: 30px 16px 46px; color: var(--muted); font-size: 14px; text-ali
     <a href="legal/refund.html" data-i="legal.refund"></a>
     <a href="legal/contact.html" data-i="legal.contact"></a>
   </nav>
-  <div class="seller"><span data-seller="name"></span> · <span data-seller="address"></span> · <span data-seller="email"></span> · <span data-seller="phone"></span></div>
+  <div class="seller" id="seller"></div>
   <div><span data-i="footer.by"></span> · © 2026 Dayloom</div>
   <div class="cards" aria-label="Payment">🔒 PayTR · VISA · Mastercard · Troy</div>
 </footer>
@@ -320,7 +320,11 @@ footer { padding: 30px 16px 46px; color: var(--muted); font-size: 14px; text-ali
     sel.value = l;
   }
   var S = window.DAYLOOM_SELLER || {};
-  document.querySelectorAll('[data-seller]').forEach(function (el) { el.textContent = S[el.getAttribute('data-seller')] || ''; });
+  var sl = document.getElementById('seller');
+  [S.name, S.address, S.email, S.phone].filter(Boolean).forEach(function (v, i) {
+    if (i) sl.appendChild(document.createTextNode(' · '));
+    if (v === S.email) { var a = document.createElement('a'); a.href = 'mailto:' + v; a.textContent = v; sl.appendChild(a); } else sl.appendChild(document.createTextNode(v));
+  });
   sel.addEventListener('change', function () { try { localStorage.setItem('dayloom-lang', sel.value); } catch (e) {} apply(sel.value); });
   apply(detect());
   var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) {
