@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shared from Dayloom</title>
+<meta name="description" content="Progress shared from Dayloom, the day planner for Mac that schedules your tasks for you.">
+<link rel="canonical" href="https://eclk16.github.io/dayloom-releases/s/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dayloom">
+<meta property="og:title" content="Shared from Dayloom">
+<meta property="og:description" content="Progress shared from Dayloom, the day planner for Mac that schedules your tasks for you.">
+<meta property="og:image" content="https://eclk16.github.io/dayloom-releases/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!--[head]-->
+<link rel="icon" type="image/png" href="../assets/icon-64.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta name="theme-color" content="#f7f6f3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e0e11" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+window.DAYLOOM_ROOT="../";(function(){var d=document.documentElement,A=["en","tr","de","fr","es","pt","id","zh-Hans","ja","ko","ar","ur","ru","hi","bn","vi"],l=null,q=(location.search.match(/[?&]lang=([A-Za-z-]+)/)||[])[1];
+function ok(x){return x&&A.indexOf(x)>=0}
+if(ok(q)){l=q;try{localStorage.setItem("dayloom-lang",q)}catch(e){}}
+if(!l){try{var s=localStorage.getItem("dayloom-lang");if(ok(s))l=s}catch(e){}}
+if(!l){var p=navigator.languages||[navigator.language||"en"];for(var i=0;i<p.length&&!l;i++){var c=(p[i]||"").toLowerCase();if(c.indexOf("zh")===0)l="zh-Hans";else if(ok(c.split("-")[0]))l=c.split("-")[0]}}
+l=l||"en";window.DAYLOOM_LANG=l;d.lang=l;d.dir=(l==="ar"||l==="ur")?"rtl":"ltr";
+if(l!=="en"){d.classList.add("i18n-wait");setTimeout(function(){d.classList.remove("i18n-wait")},2500)}
+var u=navigator.userAgent,mac=/Macintosh/.test(u)&&!/iPhone|iPad|iPod|Android/.test(u)&&!(navigator.maxTouchPoints>1);if(!mac)d.classList.add("not-mac");
+var j=document.createElement("script");j.id="i18n-"+l;j.src="../i18n/"+l+".js";j.async=true;document.head.appendChild(j)})();
+</script>
+<!--[/head]-->
+<style>
+.share { text-align: center; }
+.who { color: var(--muted); font-size: 15px; margin: 0 0 14px; min-height: 22px; }
+.scard { background: var(--card); border: 1px solid var(--line); border-radius: 26px; padding: 34px 28px 26px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+.scard::before { content: ""; position: absolute; inset: 0 0 auto; height: 6px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+.medal { width: 96px; height: 96px; margin: 4px auto 18px; border-radius: 50%; display: grid; place-items: center; font-size: 40px; font-weight: 800; color: #fff;
+  background: linear-gradient(140deg, var(--pro1), var(--pro2)); box-shadow: 0 14px 30px -10px color-mix(in srgb, var(--accent2) 60%, transparent); }
+.medal.gold { background: linear-gradient(140deg, #f3c34a, #d79b1c); box-shadow: 0 14px 30px -10px rgba(215,155,28,.6); }
+.medal.green { background: linear-gradient(140deg, #4fd08a, #2fb36b); box-shadow: 0 14px 30px -10px rgba(47,179,107,.55); }
+.medal svg { width: 46px; height: 46px; }
+.share h1 { font-size: clamp(26px, 6vw, 34px); line-height: 1.15; margin: 8px 0; }
+.share .kicker { margin-bottom: 0; }
+.desc { color: var(--muted); margin: 0 auto 20px; max-width: 420px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-top: 6px; }
+.stat { border: 1px solid var(--line); border-radius: 14px; padding: 12px 8px; }
+.stat b { display: block; font-size: 24px; letter-spacing: -.01em; }
+.stat span { color: var(--muted); font-size: 13px; }
+.date { color: var(--muted); font-size: 13.5px; margin-top: 18px; min-height: 20px; }
+.scta { margin-top: 30px; }
+.scta p { color: var(--muted); margin: 0 0 14px; }
+.scta .more { display: block; margin-top: 16px; color: var(--muted); font-size: 15px; }
+</style>
+</head>
+<body>
+<!--[header]-->
+<a class="skip" href="#main" data-i="a11y.skip">Skip to content</a>
+<header class="top">
+  <div class="wrap nav">
+    <a class="brand" href="../"><img src="../assets/icon-64.png" width="32" height="32" alt="">Dayloom</a>
+    <span class="spacer"></span>
+    <nav class="links" data-aria="a11y.menu" aria-label="Main navigation">
+      <a class="link" href="../#how" data-i="nav.how">How it works</a>
+      <a class="link" href="../#features" data-i="nav.features">Features</a>
+      <a class="link" href="../#pricing" data-i="nav.pricing">Pricing</a>
+      <a class="link" href="../#faq" data-i="nav.faq">Questions</a>
+    </nav>
+    <select class="lang" id="lang" data-aria="a11y.lang" aria-label="Language"></select>
+    <a class="btn primary sm" data-dl href="https://github.com/eclk16/dayloom-releases/releases/latest/download/Dayloom.dmg"><span data-i="nav.download">Download</span></a>
+  </div>
+</header>
+<!--[/header]-->
+<div class="page-clip">
+<main id="main" class="page narrow share">
+  <div class="glow"></div>
+  <p class="who" id="who"></p>
+  <div class="scard">
+    <div class="medal" id="medal" aria-hidden="true"></div>
+    <div class="kicker" id="kicker"></div>
+    <h1 id="title" data-i="share.invite.title">A calmer way to plan your workday</h1>
+    <p class="desc" id="desc" data-i="share.invite.d">Dayloom turns your morning list into a clear schedule for the day. It’s free for Mac.</p>
+    <div class="stats" id="stats"></div>
+    <div class="date" id="date"></div>
+  </div>
+  <div class="scta">
+    <p id="ctaText" data-i="share.cta">Dayloom is a free day planner for Mac.</p>
+    <a class="btn primary" data-dl href="https://github.com/eclk16/dayloom-releases/releases/latest/download/Dayloom.dmg"><svg class="apple" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.8c-1.6 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7 2-1.1 2.8-2.3c.9-1.3 1.2-2.5 1.3-2.6-.1 0-2.5-1-2.5-3.8zM14.1 5.8c.6-.8 1.1-1.8 1-2.8-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.7-1 2.7 1 .1 2-.5 2.7-1.3z"/></svg><span data-i="share.cta.btn">Get Dayloom for free</span></a>
+    <p class="meta" style="margin:14px 0 0;font-size:14.5px" data-i="hero.meta">Free · macOS 14 or later · No account needed</p>
+    <a class="more" href="../#features" data-i="share.cta.more">See all of Dayloom’s features</a>
+  </div>
+</main>
+</div>
+<!--[footer]-->
+<footer class="site">
+  <div class="wrap ft">
+    <div>
+      <a class="brand" href="../"><img src="../assets/icon-64.png" width="32" height="32" alt="" loading="lazy">Dayloom</a>
+      <p data-i="footer.tagline">A day planner for Mac.</p>
+      <p data-i="hero.meta">Free · macOS 14 or later · No account needed</p>
+      <p data-i="footer.by">Made by Emre Çolak</p>
+    </div>
+    <div>
+      <h2 data-i="footer.product">Product</h2>
+      <ul>
+        <li><a href="../#how" data-i="nav.how">How it works</a></li>
+        <li><a href="../#features" data-i="nav.features">Features</a></li>
+        <li><a href="../#pricing" data-i="nav.pricing">Pricing</a></li>
+        <li><a href="../#faq" data-i="nav.faq">Questions</a></li>
+        <li><a href="../leaderboard.html" data-i="lb.title">Leaderboard</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 data-i="footer.legal">Legal</h2>
+      <ul>
+        <li><a href="../legal/privacy.html" data-i="legal.privacy">Privacy</a></li>
+        <li><a href="../legal/terms.html" data-i="legal.terms">Terms of Use</a></li>
+        <li><a href="../legal/distance-sales.html" data-i="legal.sales">Distance Sales Agreement</a></li>
+        <li><a href="../legal/refund.html" data-i="legal.refund">Cancellation &amp; Refunds</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 data-i="footer.support">Support</h2>
+      <ul>
+        <li><a href="../legal/contact.html" data-i="legal.contact">Contact</a></li>
+        <li><a href="https://github.com/eclk16/dayloom-releases/releases" data-i="final.notes">Release notes</a></li>
+        <li><a class="mac-only" href="https://github.com/eclk16/dayloom-releases/releases/latest/download/Dayloom.dmg" data-i="hero.download">Download for Mac</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap ft-bottom">
+    <span>© 2026 Dayloom · <span id="seller"></span></span>
+    <span class="ft-pay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span><span data-i="footer.pay">Card payments by PayTR</span> · VISA · Mastercard · Troy</span></span>
+  </div>
+</footer>
+<script src="../legal/seller.js" defer></script>
+<script src="../assets/site.js" defer></script>
+<!--[/footer]-->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var DL = window.Dayloom, t = DL.t, L = DL.lang();
+  function render() {
+  L = DL.lang(); var medal = document.getElementById('medal'); medal.className = 'medal'; medal.textContent = ''; document.getElementById('stats').textContent = ''; document.getElementById('stats').style.display = '';
+  function set(id, text) { document.getElementById(id).textContent = text || ''; }
+  function clip(v, n) { return typeof v === 'string' ? v.slice(0, n) : ''; }
+  function num(v) { v = Number(v); return isFinite(v) && v >= 0 ? Math.min(Math.floor(v), 1e6) : 0; }
+
+  // Veri bağlantının # kısmında (sunucuya gitmez); base64url JSON
+  var data = {};
+  try {
+    var h = location.hash.slice(1);
+    if (h && h.length < 4000) {
+      var b = h.replace(/-/g, '+').replace(/_/g, '/'); while (b.length % 4) b += '=';
+      var bytes = Uint8Array.from(atob(b), function (c) { return c.charCodeAt(0); });
+      data = JSON.parse(new TextDecoder().decode(bytes)) || {};
+    }
+  } catch (e) { data = {}; }
+  var kinds = ['day', 'task', 'badge', 'level', 'streak', 'week', 'invite'];
+  var k = kinds.indexOf(data.k) >= 0 ? data.k : 'invite';
+  var name = clip(data.n, 40).trim();
+
+  var svg = {
+    check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+    star: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>',
+    flame: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1 3.5 5 5.5 5 10.5A5 5 0 0 1 7 12.5c0-2 1-3.5 2-4.5 0 2 1 3 2 3 0-3 0-6 1-9z"/></svg>',
+    medal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="14" r="6"/><path d="M8.5 2.5L12 8l3.5-5.5M12 11.5l.9 1.8 2 .3-1.4 1.4.3 2-1.8-.9-1.8.9.3-2-1.4-1.4 2-.3z"/></svg>',
+    cal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>',
+    wave: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 8c2.5-3 5.5-3 8 0s5.5 3 8 0M4 16c2.5-3 5.5-3 8 0s5.5 3 8 0"/></svg>'
+  };
+  var stats = [];
+  function stat(v, label) { stats.push([v, label]); }
+  function mins(m) { m = num(m); var h = Math.floor(m / 60), r = m % 60; return h ? (r ? t('share.hm', { h: h, m: r }) : t('share.h', { h: h })) : t('share.m', { m: r }); }
+
+  switch (k) {
+    case 'day':
+      var c = num(data.c), tot = num(data.t);
+      medal.innerHTML = data.p ? svg.star : svg.check; if (data.p) medal.classList.add('gold'); else medal.classList.add('green');
+      set('kicker', data.p ? t('share.day.perfect.k') : t('share.day.k'));
+      set('title', tot ? t('share.day.title', { c: c, t: tot }) : t('share.day.title0'));
+      set('desc', data.p ? t('share.day.perfect.d') : t('share.day.d'));
+      if (data.s) stat(num(data.s), t('share.stat.streak'));
+      if (data.m) stat(mins(data.m), t('share.stat.tracked'));
+      if (data.x) stat('+' + num(data.x), 'XP');
+      if (data.lv) stat(num(data.lv), clip(data.lt, 30) || t('share.stat.level'));
+      break;
+    case 'task':
+      medal.innerHTML = svg.check; medal.classList.add('green');
+      set('kicker', data.ot ? t('share.task.ontime.k') : t('share.task.k'));
+      set('title', t('share.task.title'));
+      set('desc', t('share.task.d'));
+      if (data.x) stat('+' + num(data.x), 'XP');
+      break;
+    case 'badge':
+      medal.innerHTML = svg.medal; medal.classList.add('gold');
+      set('kicker', t('share.badge.k'));
+      set('title', clip(data.b, 80) || t('share.badge.title'));
+      set('desc', clip(data.bd, 200) || t('share.badge.d'));
+      if (['daily', 'weekly', 'monthly', 'permanent'].indexOf(data.bt) >= 0) stat(t('share.tier.' + data.bt), t('share.stat.tier'));
+      break;
+    case 'level':
+      medal.textContent = String(num(data.lv) || ''); 
+      set('kicker', t('share.level.k'));
+      set('title', t('share.level.title', { lv: num(data.lv), lt: clip(data.lt, 30) }));
+      set('desc', t('share.level.d'));
+      break;
+    case 'streak':
+      medal.innerHTML = svg.flame;
+      set('kicker', t('share.streak.k'));
+      set('title', t('share.streak.title', { s: num(data.s) }));
+      set('desc', t('share.streak.d'));
+      break;
+    case 'week':
+      medal.innerHTML = svg.cal;
+      set('kicker', t('share.week.k'));
+      set('title', t('share.week.title', { c: num(data.c), t: num(data.t) }));
+      set('desc', t('share.week.d'));
+      if (data.dd) stat(num(data.dd), t('share.stat.days'));
+      if (data.m) stat(mins(data.m), t('share.stat.tracked'));
+      if (data.x) stat('+' + num(data.x), 'XP');
+      break;
+    default:
+      medal.innerHTML = svg.wave;
+      set('kicker', t('share.invite.k'));
+      set('title', t('share.invite.title'));
+      set('desc', t('share.invite.d'));
+  }
+  var box = document.getElementById('stats');
+  if (!stats.length) box.style.display = 'none';
+  stats.forEach(function (s) { var d = document.createElement('div'); d.className = 'stat'; var b = document.createElement('b'); b.textContent = s[0]; var sp = document.createElement('span'); sp.textContent = s[1]; d.appendChild(b); d.appendChild(sp); box.appendChild(d); });
+
+  if (/^\d{4}-\d{2}-\d{2}$/.test(data.d || '')) {
+    try { set('date', new Date(data.d + 'T12:00:00').toLocaleDateString(DL.locale(), { day: 'numeric', month: 'long', year: 'numeric' })); } catch (e) {}
+  }
+  set('who', k === 'invite' ? (name ? t('share.who.invite', { n: name }) : '') : (name ? t('share.who', { n: name }) : t('share.who.anon')));
+  set('ctaText', k === 'invite' ? t('share.cta.invite') : t('share.cta'));
+  document.title = document.getElementById('title').textContent + ' · Dayloom';
+  }
+  DL.onLang(render);
+});
+</script>
+</body>
+</html>

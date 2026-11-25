@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dayloom Pro</title>
+<meta name="description" content="The result of your Dayloom payment.">
+<meta name="robots" content="noindex">
+<!--[head]-->
+<link rel="icon" type="image/png" href="assets/icon-64.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#f7f6f3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e0e11" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="assets/site.css">
+<script>
+window.DAYLOOM_ROOT="";(function(){var d=document.documentElement,A=["en","tr","de","fr","es","pt","id","zh-Hans","ja","ko","ar","ur","ru","hi","bn","vi"],l=null,q=(location.search.match(/[?&]lang=([A-Za-z-]+)/)||[])[1];
+function ok(x){return x&&A.indexOf(x)>=0}
+if(ok(q)){l=q;try{localStorage.setItem("dayloom-lang",q)}catch(e){}}
+if(!l){try{var s=localStorage.getItem("dayloom-lang");if(ok(s))l=s}catch(e){}}
+if(!l){var p=navigator.languages||[navigator.language||"en"];for(var i=0;i<p.length&&!l;i++){var c=(p[i]||"").toLowerCase();if(c.indexOf("zh")===0)l="zh-Hans";else if(ok(c.split("-")[0]))l=c.split("-")[0]}}
+l=l||"en";window.DAYLOOM_LANG=l;d.lang=l;d.dir=(l==="ar"||l==="ur")?"rtl":"ltr";
+if(l!=="en"){d.classList.add("i18n-wait");setTimeout(function(){d.classList.remove("i18n-wait")},2500)}
+var u=navigator.userAgent,mac=/Macintosh/.test(u)&&!/iPhone|iPad|iPod|Android/.test(u)&&!(navigator.maxTouchPoints>1);if(!mac)d.classList.add("not-mac");
+var j=document.createElement("script");j.id="i18n-"+l;j.src="i18n/"+l+".js";j.async=true;document.head.appendChild(j)})();
+</script>
+<!--[/head]-->
+<style>
+.pay-head { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.pay-head img { width: 40px; height: 40px; border-radius: 10px; }
+.pay-head b { font-size: 19px; display: block; } .pay-head span { color: var(--muted); font-size: 14.5px; }
+.pay-box { background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; min-height: 120px; }
+.pay-err { color: #b3261e; padding: 28px 24px; text-align: center; }
+.msg { text-align: center; padding: 44px 28px; margin-top: 24px; }
+.msg .ico { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; margin: 0 auto 16px; color: #fff; background: var(--green-text); }
+.msg .ico.warn { background: #a8770f; }
+.msg .ico svg { width: 30px; height: 30px; }
+.msg h1 { font-size: 28px; margin: 0 0 8px; }
+.msg p { color: var(--muted); margin: 0 0 22px; }
+</style>
+</head>
+<body>
+<!--[header]-->
+<a class="skip" href="#main" data-i="a11y.skip">Skip to content</a>
+<header class="top">
+  <div class="wrap nav">
+    <a class="brand" href="./"><img src="assets/icon-64.png" width="32" height="32" alt="">Dayloom</a>
+    <span class="spacer"></span>
+    <nav class="links" data-aria="a11y.menu" aria-label="Main navigation">
+      <a class="link" href="./#how" data-i="nav.how">How it works</a>
+      <a class="link" href="./#features" data-i="nav.features">Features</a>
+      <a class="link" href="./#pricing" data-i="nav.pricing">Pricing</a>
+      <a class="link" href="./#faq" data-i="nav.faq">Questions</a>
+    </nav>
+    <select class="lang" id="lang" data-aria="a11y.lang" aria-label="Language"></select>
+    <a class="btn primary sm" data-dl href="https://github.com/eclk16/dayloom-releases/releases/latest/download/Dayloom.dmg"><span data-i="nav.download">Download</span></a>
+  </div>
+</header>
+<!--[/header]-->
+<main id="main" class="page narrow">
+  <div class="card msg" id="ok">
+    <div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    <h1 data-i="paid.ok.t">Thank you</h1><p data-i="paid.ok.d">Your payment has been received. You can return to Dayloom, where your plan will be active in a few seconds.</p>
+  </div>
+  <div class="card msg" id="fail" hidden>
+    <div class="ico warn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v6M12 17v.01"/></svg></div>
+    <h1 data-i="paid.fail.t">The payment didn’t go through</h1><p data-i="paid.fail.d">You haven’t been charged. You can return to Dayloom and try again.</p>
+  </div>
+</main>
+<!--[footer]-->
+<footer class="site">
+  <div class="wrap ft">
+    <div>
+      <a class="brand" href="./"><img src="assets/icon-64.png" width="32" height="32" alt="" loading="lazy">Dayloom</a>
+      <p data-i="footer.tagline">A day planner for Mac.</p>
+      <p data-i="hero.meta">Free · macOS 14 or later · No account needed</p>
+      <p data-i="footer.by">Made by Emre Çolak</p>
+    </div>
+    <div>
+      <h2 data-i="footer.product">Product</h2>
+      <ul>
+        <li><a href="./#how" data-i="nav.how">How it works</a></li>
+        <li><a href="./#features" data-i="nav.features">Features</a></li>
+        <li><a href="./#pricing" data-i="nav.pricing">Pricing</a></li>
+        <li><a href="./#faq" data-i="nav.faq">Questions</a></li>
+        <li><a href="leaderboard.html" data-i="lb.title">Leaderboard</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 data-i="footer.legal">Legal</h2>
+      <ul>
+        <li><a href="legal/privacy.html" data-i="legal.privacy">Privacy</a></li>
+        <li><a href="legal/terms.html" data-i="legal.terms">Terms of Use</a></li>
+        <li><a href="legal/distance-sales.html" data-i="legal.sales">Distance Sales Agreement</a></li>
+        <li><a href="legal/refund.html" data-i="legal.refund">Cancellation &amp; Refunds</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 data-i="footer.support">Support</h2>
+      <ul>
+        <li><a href="legal/contact.html" data-i="legal.contact">Contact</a></li>
+        <li><a href="https://github.com/eclk16/dayloom-releases/releases" data-i="final.notes">Release notes</a></li>
+        <li><a class="mac-only" href="https://github.com/eclk16/dayloom-releases/releases/latest/download/Dayloom.dmg" data-i="hero.download">Download for Mac</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap ft-bottom">
+    <span>© 2026 Dayloom · <span id="seller"></span></span>
+    <span class="ft-pay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span><span data-i="footer.pay">Card payments by PayTR</span> · VISA · Mastercard · Troy</span></span>
+  </div>
+</footer>
+<script src="legal/seller.js" defer></script>
+<script src="assets/site.js" defer></script>
+<!--[/footer]-->
+<script>
+if (/[?&]failed=1/.test(location.search)) { document.getElementById('ok').hidden = true; document.getElementById('fail').hidden = false; }
+</script>
+</body>
+</html>
