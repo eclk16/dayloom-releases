@@ -1,33 +1,125 @@
-<!doctype html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>İletişim · Dayloom</title><link rel="icon" href="../assets/icon.png"><link rel="stylesheet" href="style.css"></head><body>
-<header><div class="bar"><a href="../"><img src="../assets/icon.png" alt="">Dayloom</a><span class="sp"></span><button id="lng">English</button></div></header>
-<main>
+<!doctype html>
+<html lang="en" data-title="legal.contact">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact · Dayloom</title>
+<meta name="description" content="How to reach Dayloom with questions, suggestions, and payment or refund requests.">
+<link rel="canonical" href="https://eclk16.github.io/dayloom-releases/legal/contact.html">
+<meta property="og:title" content="Contact · Dayloom">
+<meta property="og:image" content="https://eclk16.github.io/dayloom-releases/assets/og.png">
+<!--[head]-->
+<link rel="icon" type="image/png" href="../assets/icon-64.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta name="theme-color" content="#f7f6f3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e0e11" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="../assets/site.css">
+<script>
+window.DAYLOOM_ROOT="../";(function(){var d=document.documentElement,A=["en","tr","de","fr","es","pt","id","zh-Hans","ja","ko","ar","ur","ru","hi","bn","vi"],l=null,q=(location.search.match(/[?&]lang=([A-Za-z-]+)/)||[])[1];
+function ok(x){return x&&A.indexOf(x)>=0}
+if(ok(q)){l=q;try{localStorage.setItem("dayloom-lang",q)}catch(e){}}
+if(!l){try{var s=localStorage.getItem("dayloom-lang");if(ok(s))l=s}catch(e){}}
+if(!l){var p=navigator.languages||[navigator.language||"en"];for(var i=0;i<p.length&&!l;i++){var c=(p[i]||"").toLowerCase();if(c.indexOf("zh")===0)l="zh-Hans";else if(ok(c.split("-")[0]))l=c.split("-")[0]}}
+l=l||"en";window.DAYLOOM_LANG=l;d.lang=l;d.dir=(l==="ar"||l==="ur")?"rtl":"ltr";
+if(l!=="en"){d.classList.add("i18n-wait");setTimeout(function(){d.classList.remove("i18n-wait")},2500)}
+var u=navigator.userAgent,mac=/Macintosh/.test(u)&&!/iPhone|iPad|iPod|Android/.test(u)&&!(navigator.maxTouchPoints>1);if(!mac)d.classList.add("not-mac");
+var j=document.createElement("script");j.id="i18n-"+l;j.src="../i18n/"+l+".js";j.async=true;document.head.appendChild(j)})();
+</script>
+<!--[/head]-->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--[header]-->
+<a class="skip" href="#main" data-i="a11y.skip">Skip to content</a>
+<header class="top">
+  <div class="wrap nav">
+    <a class="brand" href="../"><img src="../assets/icon-64.png" width="32" height="32" alt="">Dayloom</a>
+    <span class="spacer"></span>
+    <nav class="links" data-aria="a11y.menu" aria-label="Main navigation">
+      <a class="link" href="../#how" data-i="nav.how">How it works</a>
+      <a class="link" href="../#features" data-i="nav.features">Features</a>
+      <a class="link" href="../#pricing" data-i="nav.pricing">Pricing</a>
+      <a class="link" href="../#faq" data-i="nav.faq">Questions</a>
+    </nav>
+    <select class="lang" id="lang" data-aria="a11y.lang" aria-label="Language"></select>
+    <a class="btn primary sm" data-dl href="https://github.com/eclk16/dayloom-releases/releases/latest/download/Dayloom.dmg"><span data-i="nav.download">Download</span></a>
+  </div>
+</header>
+<!--[/header]-->
+<main id="main" class="page legal">
+<p class="langnote" data-i="legal.langnote">The legal documents are available in Turkish and English.</p>
 <div data-lang="tr"><h1>İletişim</h1><div class="upd">Son güncelleme: 25 Kasım 2026</div>
 
-<p>Soruların, önerilerin, ödeme ve iade talepleriyle ilgili bize aşağıdaki bilgilerden ulaşabilirsin. Uygulamadaki “Geri Bildirim Gönder” düğmesiyle de yazabilirsin.</p>
+<p>Sorularınız, önerileriniz, ödeme ve iade taleplerinizle ilgili bize aşağıdaki bilgilerden ulaşabilirsiniz. Uygulamadaki “Geri Bildirim Gönder” düğmesiyle de yazabilirsiniz.</p>
 <div class="box">
-<div><b>Satıcı</b><span data-seller="name"></span></div>
-<div><b>Adres</b><span data-seller="address"></span></div>
-<div><b>Vergi dairesi / no</b><span data-seller="taxOffice"></span> / <span data-seller="taxId"></span></div>
-<div class="opt"><b>MERSİS no</b><span data-seller="mersis"></span></div>
-<div><b>E-posta</b><span data-seller="email"></span></div>
-<div><b>Telefon</b><span data-seller="phone"></span></div>
-<div class="opt"><b>KEP</b><span data-seller="kep"></span></div>
+<div><b>Satıcı</b><span data-seller="name">Emre Çolak</span></div>
+<div hidden><b>Adres</b><span data-seller="address"></span></div>
+<div hidden><b>Vergi dairesi / no</b><span data-seller="taxOffice"></span> / <span data-seller="taxId"></span></div>
+<div class="opt" hidden><b>MERSİS no</b><span data-seller="mersis"></span></div>
+<div><b>E-posta</b><span data-seller="email">clkofis@gmail.com</span></div>
+<div hidden><b>Telefon</b><span data-seller="phone"></span></div>
+<div class="opt" hidden><b>KEP</b><span data-seller="kep"></span></div>
 </div>
 </div>
 <div data-lang="en"><h1>Contact</h1><div class="upd">Last updated: 25 November 2026</div>
 
 <p>Reach us with questions, suggestions, payment or refund requests using the details below, or with “Send Feedback” in the app.</p>
 <div class="box">
-<div><b>Seller</b><span data-seller="name"></span></div>
-<div><b>Address</b><span data-seller="address"></span></div>
-<div><b>Tax office / number</b><span data-seller="taxOffice"></span> / <span data-seller="taxId"></span></div>
-<div class="opt"><b>MERSIS no</b><span data-seller="mersis"></span></div>
-<div><b>Email</b><span data-seller="email"></span></div>
-<div><b>Phone</b><span data-seller="phone"></span></div>
-<div class="opt"><b>KEP</b><span data-seller="kep"></span></div>
+<div><b>Seller</b><span data-seller="name">Emre Çolak</span></div>
+<div hidden><b>Address</b><span data-seller="address"></span></div>
+<div hidden><b>Tax office / number</b><span data-seller="taxOffice"></span> / <span data-seller="taxId"></span></div>
+<div class="opt" hidden><b>MERSIS no</b><span data-seller="mersis"></span></div>
+<div><b>Email</b><span data-seller="email">clkofis@gmail.com</span></div>
+<div hidden><b>Phone</b><span data-seller="phone"></span></div>
+<div class="opt" hidden><b>KEP</b><span data-seller="kep"></span></div>
 </div>
 </div>
 </main>
-<footer><a href="privacy.html"><span data-lang="tr">Gizlilik ve KVKK</span><span data-lang="en">Privacy</span></a> <a href="terms.html"><span data-lang="tr">Kullanım Koşulları</span><span data-lang="en">Terms of Use</span></a> <a href="distance-sales.html"><span data-lang="tr">Mesafeli Satış Sözleşmesi</span><span data-lang="en">Distance Sales Agreement</span></a> <a href="refund.html"><span data-lang="tr">İptal ve İade</span><span data-lang="en">Cancellation & Refunds</span></a> <a href="contact.html"><span data-lang="tr">İletişim</span><span data-lang="en">Contact</span></a><div style="margin-top:8px">© 2026 Dayloom</div></footer>
-<script src="seller.js"></script><script src="common.js"></script></body></html>
+<!--[footer]-->
+<footer class="site">
+  <div class="wrap ft">
+    <div>
+      <a class="brand" href="../"><img src="../assets/icon-64.png" width="32" height="32" alt="" loading="lazy">Dayloom</a>
+      <p data-i="footer.tagline">A day planner for Mac.</p>
+      <p data-i="hero.meta">Free · macOS 14 or later · No account needed</p>
+      <p data-i="footer.by">Made by Emre Çolak</p>
+    </div>
+    <div>
+      <h2 data-i="footer.product">Product</h2>
+      <ul>
+        <li><a href="../#how" data-i="nav.how">How it works</a></li>
+        <li><a href="../#features" data-i="nav.features">Features</a></li>
+        <li><a href="../#pricing" data-i="nav.pricing">Pricing</a></li>
+        <li><a href="../#faq" data-i="nav.faq">Questions</a></li>
+        <li><a href="../leaderboard.html" data-i="lb.title">Leaderboard</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 data-i="footer.legal">Legal</h2>
+      <ul>
+        <li><a href="../legal/privacy.html" data-i="legal.privacy">Privacy</a></li>
+        <li><a href="../legal/terms.html" data-i="legal.terms">Terms of Use</a></li>
+        <li><a href="../legal/distance-sales.html" data-i="legal.sales">Distance Sales Agreement</a></li>
+        <li><a href="../legal/refund.html" data-i="legal.refund">Cancellation &amp; Refunds</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 data-i="footer.support">Support</h2>
+      <ul>
+        <li><a href="../legal/contact.html" data-i="legal.contact">Contact</a></li>
+        <li><a href="https://github.com/eclk16/dayloom-releases/releases" data-i="final.notes">Release notes</a></li>
+        <li><a class="mac-only" href="https://github.com/eclk16/dayloom-releases/releases/latest/download/Dayloom.dmg" data-i="hero.download">Download for Mac</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap ft-bottom">
+    <span>© 2026 Dayloom · <span id="seller"></span></span>
+    <span class="ft-pay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span><span data-i="footer.pay">Card payments by PayTR</span> · VISA · Mastercard · Troy</span></span>
+  </div>
+</footer>
+<script src="../legal/seller.js" defer></script>
+<script src="../assets/site.js" defer></script>
+<!--[/footer]-->
+<script src="common.js" defer></script>
+</body>
+</html>
